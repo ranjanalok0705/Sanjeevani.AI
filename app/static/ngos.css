@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #4CAF50;
+    text-align: center;
+}
+
+/* Table Styles */
+#ngo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+#ngo-table thead tr {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+}
+
+#ngo-table th,
+#ngo-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+#ngo-table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#ngo-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+#ngo-table tbody tr:last-of-type {
+    border-bottom: 2px solid #4CAF50;
+}
+
+#ngo-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
