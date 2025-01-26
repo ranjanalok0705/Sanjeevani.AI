@@ -11,7 +11,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 # MongoDB connection setup
-client = MongoClient("mongodb+srv://alokranjan700003:%40Alok123@sanjeevani.eu281.mongodb.net/")  # Adjust MongoDB URI if needed
+client = MongoClient("mongodb-uri/")  # Adjust MongoDB URI if needed
 db = client["disaster_db"]  # Replace with your actual database name
 disasters_collection = db["ngo_dataset"]  # Replace with your collection name
 
