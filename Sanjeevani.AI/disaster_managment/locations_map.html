@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cc61b806e997edf199aae087db238fad {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cc61b806e997edf199aae087db238fad" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cc61b806e997edf199aae087db238fad = L.map(
+                "map_cc61b806e997edf199aae087db238fad",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5a30593f440d8092988677ea4d1a1894 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5a30593f440d8092988677ea4d1a1894.addTo(map_cc61b806e997edf199aae087db238fad);
+        
+    
+            var marker_cluster_bccc514b60fd8963471bae826faed412 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_477f58aeb287be651ccfee05fdf82d03 = L.marker(
+                [12.98815675, 77.62260003796],
+                {
+}
+            ).addTo(marker_cluster_bccc514b60fd8963471bae826faed412);
+        
+    
+        var popup_d05de60c2af8dd1f990eb97cde3a3211 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd6da9f78490593753b5a0bf0fab1a58 = $(`<div id="html_cd6da9f78490593753b5a0bf0fab1a58" style="width: 100.0%; height: 100.0%;"><b>Message:</b> forest fire<br><b>Category:</b> fire (Confidence: 0.80)<br><b>NGO:</b> Hope Foundation (Bengaluru)<br><b>Contact:</b> +91 9024616875, <b>Email:</b> ngo_19@help.org<br><b>Distance:</b> 74.80 km</div>`)[0];
+                popup_d05de60c2af8dd1f990eb97cde3a3211.setContent(html_cd6da9f78490593753b5a0bf0fab1a58);
+            
+        
+
+        marker_477f58aeb287be651ccfee05fdf82d03.bindPopup(popup_d05de60c2af8dd1f990eb97cde3a3211)
+        ;
+
+        
+    
+    
+            marker_cluster_bccc514b60fd8963471bae826faed412.addTo(map_cc61b806e997edf199aae087db238fad);
+        
+</script>
+</html>
