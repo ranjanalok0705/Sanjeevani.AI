@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Home - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>   
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="#prediction">Disaster Prediction</a></li>
+                <li><a href="#monitoring">Monitoring</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <h2>Welcome, Organization!</h2>
+            <p style="text-align: center; width: 100%; margin: 0 auto;">You are now logged in. Here is your dashboard for active service requests.</p>
+        </section>
+
+        <section id="active-requests">
+            <h3>Active Service Requests</h3>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>Place of Request</th>
+                        <th>Date & Time</th>
+                        <th>Severity Level</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data rows will be dynamically populated -->
+                    <tr>
+                        <td>Place 1</td>
+                        <td>2025-02-01 12:30 PM</td>
+                        <td>High</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>Place 2</td>
+                        <td>2025-02-01 01:00 PM</td>
+                        <td>Medium</td>
+                        <td>In Progress</td>
+                    </tr>
+                    <tr>
+                        <td>Place 3</td>
+                        <td>2025-02-01 01:30 PM</td>
+                        <td>Low</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="active-services">
+            <h3>Currently Active Services</h3>
+            <div class="service-container">
+                <!-- Placeholder for service categories -->
+                <div class="service">Earthquake</div>
+                <div class="service">Flood</div>
+                <div class="service">Hurricane</div>
+                <div class="service">Tornado</div>
+                <div class="service">Wildfire</div>
+                <div class="service">Tsunami</div>
+                <div class="service">Volcanic Eruption</div>
+                <div class="service">Drought</div>
+                <div class="service">Landslide</div>
+                <div class="service">Avalanche</div>
+            </div>
+        </section>
+        <section id="view-all-requests">
+            <button class="view-requests-btn">View All Rescue Requests & Service Details</button>
+        </section>
+    
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+
+    <script src="/static/index.js"></script>
+</body>
+</html>
