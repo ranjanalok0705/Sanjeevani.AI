@@ -32,7 +32,7 @@ users_collection = db["users"]  # Replace with your actual collection name
 
 vectorizer = joblib.load("app/models/vectorizer.pkl")
 tfidf_matrix = joblib.load("app/models/tfidf_matrix.pkl")
-ngos_data = list(disasters_collection.find({}, {"_id": 0, "NGO Name": 1, "City": 1, "Contact": 1, "Email": 1, "category": 1}))
+ngos_data = list(disasters_collection.find({}, {"NGO ID": 1, "NGO Name": 1, "City": 1, "Contact": 1, "Email": 1, "category": 1}))
 df = pd.DataFrame(ngos_data)
 
 # Set up Jinja2 for templating HTML
@@ -95,16 +95,15 @@ async def register(name: str = Form(...), email: str = Form(...), password: str 
     if users_collection.find_one({"email": email}):
         return HTMLResponse(content="User already exists.", status_code=400)
     users_collection.insert_one({"name": name, "email": email, "password": password, "userType": userType})
-    return RedirectResponse(url="/login", status_code=302)
+    return HTMLResponse(content="<script>alert('User registered successfully!'); window.location.href='/userLogin';</script>", status_code=200)
 
 @app.post("/predict", response_class=HTMLResponse)
 async def predict(request: Request, user_input: str = Form(...)):
     """Predict similar NGOs based on user input"""
     user_tfidf = vectorizer.transform([user_input])
     similarities = cosine_similarity(user_tfidf, tfidf_matrix).flatten()
-    top_indices = similarities.argsort()[::-1][:5]
+    top_indices = similarities.argsort()[::-1][:10]
     top_ngos = df.iloc[top_indices].to_dict(orient="records")
-
     return templates.TemplateResponse("predict.html", {"request": request, "user_input": user_input, "ngos": top_ngos})
 
 class FilterRequest(BaseModel):

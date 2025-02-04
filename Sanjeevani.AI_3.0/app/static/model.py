@@ -28,11 +28,11 @@ vectorizer = TfidfVectorizer(stop_words='english')
 tfidf_matrix = vectorizer.fit_transform(df['category'])
 
 # Ensure directory exists
-os.makedirs("models", exist_ok=True)
+os.makedirs("app/models", exist_ok=True)
 
 # Save vectorizer and matrix
-joblib.dump(vectorizer, "models/vectorizer.pkl")
-joblib.dump(tfidf_matrix, "models/tfidf_matrix.pkl")
+joblib.dump(vectorizer, "app/models/vectorizer.pkl")
+joblib.dump(tfidf_matrix, "app/models/tfidf_matrix.pkl")
 
 print("TF-IDF model saved successfully in 'models/' directory.")
 

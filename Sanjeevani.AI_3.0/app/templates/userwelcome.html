@@ -91,9 +91,9 @@
 
         <section id="prediction">
             <h2>Disaster Prediction</h2>
-            <form id="prediction-form">
+            <form action="/predict" method="POST" id="prediction-form">
                 <label for="input-data">Enter prediction data:</label>
-                <textarea id="input-data" rows="4" placeholder="Describe the situation..."></textarea>
+                <textarea id="input-data" name="user_input" rows="4" placeholder="Describe the situation..."></textarea>
                 <button type="submit">Predict</button>
             </form>
             <div id="prediction-result"></div>
@@ -104,33 +104,7 @@
             <p>Stay informed about ongoing disasters and take necessary actions promptly.</p>
         </section>
        
-        <script>
-            document.getElementById("prediction-form").addEventListener("submit", async function(event) {
-                event.preventDefault();
-                
-                let userInput = document.getElementById("input-data").value;
-                
-                // Make API request to FastAPI backend
-                let response = await fetch("http://127.0.0.1:8000/predict", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ user_input: userInput })
-                });
-        
-                let result = await response.json();
-                
-                let resultDiv = document.getElementById("prediction-result");
-                resultDiv.innerHTML = "<h3>Matching NGOs:</h3>";
-        
-                if (result.ngos.length > 0) {
-                    result.ngos.forEach(ngo => {
-                        resultDiv.innerHTML += `<p><strong>${ngo["NGO Name"]}</strong> - ${ngo["Disaster Categories"]}</p>`;
-                    });
-                } else {
-                    resultDiv.innerHTML += "<p>No matching NGOs found.</p>";
-                }
-            });
-        </script>
+      
     </main>
 
     <footer>
