@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Welcome Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>   
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>        
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="#prediction">Disaster Prediction</a></li>
+                <li><a href="#monitoring">Monitoring</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome Nigga!</h2>
+            <p style="text-align: center; width: 100%; margin: 0 auto;">This system helps manage disasters by connecting you with NGOs and providing disaster predictions.</p>
+        </section>
+        <section id="location">
+            <div class="dropdown-container">
+                <h2>Get Help!</h2>
+                <section id="filter">
+                    <form id='filterform' action="/filter" method="POST">
+                        <label for="capitalCities">Select Your City:</label>
+                        <select id="capitalCities" name="city" required>
+                            <option value="" disabled selected>Select a capital city</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Bhopal">Bhopal</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Dehradun">Dehradun</option>
+                            <option value="Dispur">Dispur</option>
+                            <option value="Gangtok">Gangtok</option>
+                            <option value="Gandhinagar">Gandhinagar</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Imphal">Imphal</option>
+                            <option value="Itanagar">Itanagar</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Kochi">Kochi</option>
+                            <option value="Kohima">Kohima</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Lucknow">Lucknow</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Panaji">Panaji</option>
+                            <option value="Patna">Patna</option>
+                            <option value="Port Blair">Port Blair</option>
+                            <option value="Raipur">Raipur</option>
+                            <option value="Ranchi">Ranchi</option>
+                            <option value="Shimla">Shimla</option>
+                            <option value="Shillong">Shillong</option>
+                            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        </select>
+                        
+                        <label for="user_input">Enter your issue:</label>
+                        <form type="text" id="user_input" name="disasterCategory" required>
+                            
+                            <textarea id="user_input" name="user_input" rows="4" placeholder="Describe the situation..."></textarea>
+                        <label for="severity">Select Severity Level:</label>
+                        <select id="severity" name="severity" required>
+                            <option value="" disabled selected>Select severity level</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        
+                        <button type="submit">Find NGOs</button>
+                    </form>
+                </section>    
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Quick service categories</h2>
+            <section id="services">
+                <div class="service-container">
+                    <div class="service">Earthquake</div>
+                    <div class="service">Flood</div>
+                    <div class="service">Hurricane</div>
+                    <div class="service">Tornado</div>
+                    <div class="service">Wildfire</div>
+                    <div class="service">Tsunami</div>
+                    <div class="service">Volcanic Eruption</div>
+                    <div class="service">Drought</div>
+                    <div class="service">Landslide</div>
+                    <div class="service">Avalanche</div>
+                </div>
+            </section>
+        </section>
+
+        <section id="prediction">
+            <h2>Disaster Prediction</h2>
+            <form action="/predict" method="POST" id="prediction-form">
+                <label for="input-data">Enter prediction data:</label>
+                <textarea id="input-data" name="user_input" rows="4" placeholder="Describe the situation..."></textarea>
+                <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
+        </section>
+
+        <section id="monitoring">
+            <h2>Service Status</h2>
+            <p>Stay informed about ongoing disasters and take necessary actions promptly.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("filterform");
+
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            const selectedSeverity = document.getElementById("severity").value;
+            localStorage.setItem("selectedSeverity", selectedSeverity); // Store in localStorage
+            console.log("Stored Severity:", selectedSeverity);
+        });
+    } else {
+        console.error("Form not found! Ensure #filterform exists in the DOM.");
+    }
+});
+
+    
+
+    </script>
+</body>
+</html>

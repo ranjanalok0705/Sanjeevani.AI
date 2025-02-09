@@ -1,0 +1,82 @@
+[
+    {
+        "Disaster ID": 1,
+        "Disaster Type": "Earthquake"
+    },
+    {
+        "Disaster ID": 2,
+        "Disaster Type": "Flood"
+    },
+    {
+        "Disaster ID": 3,
+        "Disaster Type": "Hurricane"
+    },
+    {
+        "Disaster ID": 4,
+        "Disaster Type": "Tornado"
+    },
+    {
+        "Disaster ID": 5,
+        "Disaster Type": "Wildfire"
+    },
+    {
+        "Disaster ID": 6,
+        "Disaster Type": "Tsunami"
+    },
+    {
+        "Disaster ID": 7,
+        "Disaster Type": "Volcanic eruption"
+    },
+    {
+        "Disaster ID": 8,
+        "Disaster Type": "Drought"
+    },
+    {
+        "Disaster ID": 9,
+        "Disaster Type": "Landslide"
+    },
+    {
+        "Disaster ID": 10,
+        "Disaster Type": "Avalanche"
+    },
+    {
+        "Disaster ID": 11,
+        "Disaster Type": "Epidemic"
+    },
+    {
+        "Disaster ID": 12,
+        "Disaster Type": "Pandemic"
+    },
+    {
+        "Disaster ID": 13,
+        "Disaster Type": "Nuclear accident"
+    },
+    {
+        "Disaster ID": 14,
+        "Disaster Type": "Chemical spill"
+    },
+    {
+        "Disaster ID": 15,
+        "Disaster Type": "Oil spill"
+    },
+    {
+        "Disaster ID": 16,
+        "Disaster Type": "Terrorist attack"
+    },
+    {
+        "Disaster ID": 17,
+        "Disaster Type": "Civil unrest"
+    },
+    {
+        "Disaster ID": 18,
+        "Disaster Type": "Technological failure"
+    },
+    {
+        "Disaster ID": 19,
+        "Disaster Type": "Space weather (solar storm)"
+    },
+    {
+        "Disaster ID": 20,
+        "Disaster Type": "Infrastructure collapse"
+    }
+]

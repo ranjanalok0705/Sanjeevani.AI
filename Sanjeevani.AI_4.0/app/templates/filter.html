@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Help - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Disaster Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="#prediction">Disaster Prediction</a></li>
+                <li><a href="#monitoring">Monitoring</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ngos">
+            <h2>Issue: {{ user_input }}</h2>
+
+            {% if ngos %}
+                <h3>Matching NGOs:</h3>
+                <table id="ngo-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Category</th>
+                            <th>Request</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ngo in ngos %}
+                        <tr>
+                            <td>{{ ngo['NGO ID'] }}</td>
+                            <td>{{ ngo['NGO Name'] }}</td>
+                            <td>{{ ngo['City'] }}</td>
+                            <td>{{ ngo['Contact'] }}</td>
+                            <td>{{ ngo['Email'] }}</td>
+                            <td>{{ ngo['category'] }}</td>
+                            <td><button class="request">{{ ngo['request'] }}</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No NGOs found for this issue.</p>
+            {% endif %}
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+    <script>
+        const requestButtons = document.querySelectorAll(".request");
+
+requestButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const row = button.closest("tr");
+
+        if (!row) {
+            console.error("Row not found!");
+            return;
+        }
+
+        // Extract NGO details
+        const ngoId = row.cells[0].innerText;
+        const ngoName = row.cells[1].innerText;
+        const city = row.cells[2].innerText;
+        const contact = row.cells[3].innerText;
+        const email = row.cells[4].innerText;
+        const category = row.cells[5].innerText;
+
+        // Retrieve the severity level stored during form submission
+        const selectedSeverity = localStorage.getItem("selectedSeverity") || "Not Provided";
+        console.log(selectedSeverity);
+        const message = `🚨 **Urgent Help Request** 🚨\n
+            - **NGO ID:** ${ngoId}
+            - **NGO Name:** ${ngoName}  
+            - **City:** ${city}  
+            - **Contact:** ${contact}  
+            - **Category:** ${category}  
+            - **Severity Level:** ${selectedSeverity}`;
+        // Replace with actual user data
+        const phoneNumber = "USER_PHONE_NUMBER";
+        const username = "USER_USERNAME";
+        const location = "USER_LOCATION";
+
+        // Send the data to the backend
+        fetch("/send-notification/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    org_email: email, // NGO's email
+                    message: message, // Notification message
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Notification sent successfully!");
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+    });
+
+
+    </script>
+
+</body>
+</html>
