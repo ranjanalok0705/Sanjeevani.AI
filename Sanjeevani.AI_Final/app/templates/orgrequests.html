@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Home - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>   
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <h2>Welcome, {{org_name}}</h2>
+            <p style="text-align: center; width: 100%; margin: 0 auto;">You are now logged in. Here is your dashboard for active service requests.</p>
+        </section>
+
+        <section id="all_requests">
+            <h3>All Service Requests</h3>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>Place of Request</th>
+                        <th>Date & Time</th>
+                        <th>Severity Level</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                    {% for req in requests %}
+                    <tr>
+                        <td>{{ req["place_of_request"] }}</td>
+                        <td>{{ req["date_time"] }}</td>
+                        <td>{{ req["severity_level"] }}</td>
+                        <td><label for="status">Select Status:</label>
+                            <select id="status" name="status">
+                              <option value="Pending">Pending</option>
+                              <option value="In Progress">In Progress</option>
+                              <option value="Completed">Completed</option>
+                              <option value="Cancelled">Cancelled</option>
+                              <option value="Under Review">Under Review</option>
+                            </select></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </section>
+        
+        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+    
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Directory - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="about.html">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ngos">
+            <h2>NGO Directory</h2>
+            <div id="ngo-list">
+                <!-- Loop through the disaster data and display in tabular form -->
+                <table id="ngo-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for disaster in disasters %}
+                        <tr>
+                            <td>{{ disaster['NGO ID'] }}</td>
+                            <td>{{ disaster['NGO Name'] }}</td>
+                            <td>{{ disaster['City'] }}</td>
+                            <td>{{ disaster['Contact'] }}</td>
+                            <td>{{ disaster['Email'] }}</td>
+                            <td>{{ disaster['category'] }}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+
+    <script src="/static/ngos.js"></script>
+</body>
+</html>

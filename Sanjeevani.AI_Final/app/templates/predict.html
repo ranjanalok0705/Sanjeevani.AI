@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Help - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="/about">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ngos">
+            <h2>Issue: {{ user_input }}</h2>
+
+            {% if ngos %}
+                <h3>Matching NGOs:</h3>
+                <table id="ngo-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ngo in ngos %}
+                        <tr>
+                            <td>{{ ngo['NGO ID'] }}</td>
+                            <td>{{ ngo['NGO Name'] }}</td>
+                            <td>{{ ngo['City'] }}</td>
+                            <td>{{ ngo['Contact'] }}</td>
+                            <td>{{ ngo['Email'] }}</td>
+                            <td>{{ ngo['category'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No NGOs found for this issue.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+
+    <script src="/static/ngos.js"></script>
+</body>
+</html>

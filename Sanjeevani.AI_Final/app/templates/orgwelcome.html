@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Home - Sanjeevani AI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>   
+    <header>
+        <h1 id="main-title">Disaster Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/ngos">NGOs</a></li>
+                <li><a href="#view-all-requests">Disaster Prediction</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <h2>Welcome, Organization {{ org_name }}!!</h2>
+            <p style="text-align: center; width: 100%; margin: 0 auto;">You are now logged in. Here is your dashboard for active service requests.</p>
+        </section>
+
+        <section id="recent-requests">
+            <h3>Recent Service Requests</h3>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>Place of Request</th>
+                        <th>Date & Time</th>
+                        <th>Severity Level</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="requests-body">
+                    <!-- Requests will be inserted dynamically -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="active-services">
+            <h3>Currently Active Services</h3>
+            <div class="service-container">
+                <div class="service">Earthquake</div>
+                <div class="service">Flood</div>
+                <div class="service">Hurricane</div>
+                <div class="service">Tornado</div>
+                <div class="service">Wildfire</div>
+                <div class="service">Tsunami</div>
+                <div class="service">Volcanic Eruption</div>
+                <div class="service">Drought</div>
+                <div class="service">Landslide</div>
+                <div class="service">Avalanche</div>
+            </div>
+        </section>
+        <section id="view-all-requests">
+            <a href="{{ url_for('get_all_requests') }}">
+                <button class="view-requests-btn" onclick="window.location.href='/orgrequests'">View All Rescue Requests & Service Details</button>
+            </a>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sanjeevani AI</p>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                const response = await fetch("/recent-requests/");
+                if (!response.ok) throw new Error("Failed to fetch recent requests");
+                
+                const data = await response.json();
+                const requestsBody = document.getElementById("requests-body");
+                requestsBody.innerHTML = ""; 
+
+                const statusOptions = ["Pending", "In Progress", "Completed", "Cancelled", "Under Review"];
+
+                if (data.requests.length === 0) {
+                    requestsBody.innerHTML = "<tr><td colspan='4'>No recent requests</td></tr>";
+                } else {
+                    data.requests.forEach(req => {
+                        const statusDropdown = `<select>
+                            ${statusOptions.map(status => `<option value="${status}" ${req.status === status ? 'selected' : ''}>${status}</option>`).join('')}
+                        </select>`;
+
+                        const row = `<tr>
+                            <td>${req.place_of_request}</td>
+                            <td>${req.date_time}</td>
+                            <td>${req.severity_level}</td>
+                            <td>${statusDropdown}</td>
+                        </tr>`;
+                        requestsBody.innerHTML += row;
+                    });
+                }
+            } catch (error) {
+                console.error("Error loading requests:", error);
+            }
+        });
+    </script>
+</body>
+</html>
