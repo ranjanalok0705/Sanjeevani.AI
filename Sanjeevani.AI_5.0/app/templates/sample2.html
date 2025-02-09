@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Sanjeevani.AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .glass:hover {
+            transform: scale(1.05);
+        }
+        /* Smooth Fade-In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header Section -->
+    <div class="text-center py-10">
+        <h1 class="text-5xl font-bold tracking-wide fade-in">Sanjeevani.AI</h1>
+        <p class="text-lg text-gray-300 mt-2 fade-in">AI-powered Disaster Response Management</p>
+    </div>
+
+    <!-- About Section -->
+    <div class="max-w-4xl mx-auto glass fade-in">
+        <p class="text-lg text-gray-200 leading-8">
+            Sanjeevani.AI is an advanced AI-powered disaster management system that provides real-time insights and relief support during crises. 
+            Our mission is to bridge the gap between affected communities and relief organizations through intelligent data-driven solutions.
+        </p>
+    </div>
+
+    <!-- Meet The Team Section -->
+    <div class="text-center mt-12">
+        <h2 class="text-3xl font-semibold fade-in">Meet Our Team</h2>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-8 mt-8">
+        <!-- Team Members -->
+        <div class="glass p-6 text-center w-64 fade-in">
+            <img src="/static/images/shiva.webp" alt="Eshwar B" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h3 class="text-xl font-medium">Eshwar B</h3>
+            <p class="text-gray-400">Founder & Chairman</p>
+        </div>
+
+        <div class="glass p-6 text-center w-64 fade-in">
+            <img src="/static/images/dragonball.webp" alt="Alok Ranjan" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h3 class="text-xl font-medium">Alok Ranjan</h3>
+            <p class="text-gray-400">Lead Developer</p>
+        </div>
+
+        <div class="glass p-6 text-center w-64 fade-in">
+            <img src="/static/images/ayush.png" alt="Aayush Kumar" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h3 class="text-xl font-medium">Aayush Kumar</h3>
+            <p class="text-gray-400">Data Scientist</p>
+        </div>
+
+        <div class="glass p-6 text-center w-64 fade-in">
+            <img src="/static/images/kim.jpg" alt="Mohammed Rayan" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h3 class="text-xl font-medium">Mohammed Rayan</h3>
+            <p class="text-gray-400">Dictator</p>
+        </div>
+    </div>
+
+    <!-- GSAP Animation -->
+    <script>
+        gsap.from(".fade-in", { 
+            duration: 1.2, 
+            opacity: 0, 
+            y: 20, 
+            stagger: 0.2 
+        });
+    </script>
+
+</body>
+</html>

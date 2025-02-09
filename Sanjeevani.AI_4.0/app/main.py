@@ -176,7 +176,7 @@ async def predict(request: Request, user_input: str = Form(...)):
     """Predict similar NGOs based on user input"""
     user_tfidf = vectorizer.transform([user_input])
     similarities = cosine_similarity(user_tfidf, tfidf_matrix).flatten()
-    top_indices = similarities.argsort()[::-1][:30]
+    top_indices = similarities.argsort()[::-1][:10]
     top_ngos = df.iloc[top_indices].to_dict(orient="records")
     return templates.TemplateResponse("predict.html", {"request": request, "user_input": user_input, "ngos": top_ngos})
 
@@ -191,7 +191,7 @@ async def filter_ngos(request: Request,user_input: str = Form(...), city: str = 
     similarities = cosine_similarity(user_tfidf, tfidf_matrix).flatten()
 
     # Get top 50 similar NGOs based on disaster category
-    top_indices = similarities.argsort()[::-1][:100]
+    top_indices = similarities.argsort()[::-1][:50]
     top_ngos = df.iloc[top_indices]
 
 # Filter NGOs by selected city

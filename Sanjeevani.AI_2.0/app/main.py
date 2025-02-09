@@ -1,15 +1,28 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from pymongo import MongoClient
 from fastapi import Form
 from starlette.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 
 
 app = FastAPI()
+
+
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:8000", "http://localhost:8000"],  # Allow both localhost and 127.0.0.1
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 # Serve static files (CSS, JS, images, etc.)
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
@@ -39,14 +52,19 @@ async def read_home():
 # Route for the NGOs page
 @app.get("/ngos", response_class=HTMLResponse)
 async def read_ngos(request: Request):
+    try:
     # Fetch disaster data from MongoDB
-    disasters_data = disasters_collection.find()  # Retrieves all the documents in the collection
-    
-    # Convert the MongoDB data into a list of dictionaries
-    disasters_list = list(disasters_data)
+        disasters_data = disasters_collection.find()  # Retrieves all the documents in the collection
+        
+        # Convert the MongoDB data into a list of dictionaries
+        disasters_list = list(disasters_data)
 
-    # Pass the data to the template
-    return templates.TemplateResponse("ngos.html", {"request": request, "disasters": disasters_list})
+
+        # Pass the data to the template
+        return templates.TemplateResponse("ngos.html", {"request": request, "disasters": disasters_list})
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"message": str(e)})
+    # return JSONResponse(content={"disasters":disasters_list})
 
 @app.get("/orgLogin", response_class=HTMLResponse)
 async def login_page(request: Request):

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <header>
+        <h2>Community Aid Network</h2>
+    </header>
+
+    <section class="register-container">
+        <h2>Organization Registration</h2>
+        <form name='OrgRegister' action="/orgregister" method="POST">
+            
+
+            <label for="name">Organization Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="id">Organization ID:</label>
+            <input type="text" id="id" name="id" required>
+            <label for="city" id="city">Select Your City:</label>
+                        <select id="city" name="city" required>
+                            <option value="" disabled selected>Select a capital city</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Bhopal">Bhopal</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        </select>
+                        <label for="category" id="category">Choose a Disaster Category:</label>
+                        <select id="category" name="category" required>
+                            <option value="">-- Select a Category --</option>
+                            <option value="Earthquake">Earthquake</option>
+                            <option value="Flood">Flood</option>
+                            <option value="Hurricane">Hurricane</option>
+                            <option value="Tornado">Tornado</option>
+                            <option value="Wildfire">Wildfire</option>
+                            <option value="Tsunami">Tsunami</option>
+                            <option value="Volcanic eruption">Volcanic eruption</option>
+                            <option value="Drought">Drought</option>
+                            <option value="Landslide">Landslide</option>
+                            <option value="Avalanche">Avalanche</option>
+                            <option value="Epidemic">Epidemic</option>
+                            <option value="Pandemic">Pandemic</option>
+                            <option value="Nuclear accident">Nuclear accident</option>
+                            <option value="Chemical spill">Chemical spill</option>
+                            <option value="Oil spill">Oil spill</option>
+                            <option value="Terrorist attack">Terrorist attack</option>
+                            <option value="Civil unrest">Civil unrest</option>
+                            <option value="Technological failure">Technological failure</option>
+                            <option value="Space weather (solar storm)">Space weather (solar storm)</option>
+                            <option value="Infrastructure collapse">Infrastructure collapse</option>
+                        </select>
+                        
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/orgLogin">Login here</a></p>
+    </section>
+</body>
+</html>

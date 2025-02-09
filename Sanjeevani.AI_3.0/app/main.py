@@ -106,26 +106,22 @@ async def predict(request: Request, user_input: str = Form(...)):
     top_ngos = df.iloc[top_indices].to_dict(orient="records")
     return templates.TemplateResponse("predict.html", {"request": request, "user_input": user_input, "ngos": top_ngos})
 
-class FilterRequest(BaseModel):
-    city: str
-    disasterCategory: str
+
 
 @app.post("/filter", response_class=HTMLResponse)
-async def filter_ngos(request: Request, filter_request: FilterRequest):
-    disaster_category = filter_request.disasterCategory
-    selected_city = filter_request.city
-    user_tfidf = vectorizer.transform([disaster_category])
+async def filter_ngos(request: Request, city: str = Form(...), disasterCategory: str = Form(...)):
+    """Filter NGOs based on disaster category and city."""
+    user_tfidf = vectorizer.transform([disasterCategory])
     similarities = cosine_similarity(user_tfidf, tfidf_matrix).flatten()
-    top_indices = similarities.argsort()[::-1][:5]
+
+    # Get top 10 similar NGOs based on disaster category
+    top_indices = similarities.argsort()[::-1][:50]
     top_ngos = df.iloc[top_indices]
 
-    if selected_city:
-        top_ngos = top_ngos[top_ngos['City'] == selected_city]
-    
-    filtered_ngos_dict = top_ngos.to_dict(orient="records")
+    # Filter NGOs by selected city
+    filtered_ngos = top_ngos[top_ngos["City"].str.lower() == city.lower()]
 
-    return templates.TemplateResponse("predict.html", {
-        "request": request, 
-        "user_input": disaster_category, 
-        "ngos": filtered_ngos_dict
-    })
+    return templates.TemplateResponse(
+        "filter.html",  
+        {"request": request, "city": city, "disasterCategory": disasterCategory, "ngos": filtered_ngos.to_dict(orient="records")}
+    )
